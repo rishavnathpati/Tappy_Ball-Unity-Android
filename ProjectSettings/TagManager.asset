@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pipe Remover
   - Score Checker
+  - Pipe
   layers:
   - Default
   - TransparentFX

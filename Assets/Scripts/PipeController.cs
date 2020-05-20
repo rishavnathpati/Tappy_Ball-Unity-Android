@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PipeController : MonoBehaviour
 {
@@ -13,13 +10,13 @@ public class PipeController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         MovePipe();
-        InvokeRepeating("SwitchUpDown",0.1f,1f);
+        InvokeRepeating("SwitchUpDown", 0.1f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SwitchUpDown()
@@ -35,7 +32,7 @@ public class PipeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Pipe Remover"))
+        if (collision.gameObject.CompareTag("Pipe Remover"))
         {
             Destroy(gameObject);
         }
