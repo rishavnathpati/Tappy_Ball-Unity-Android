@@ -9,6 +9,7 @@ public class LevelUIManager : MonoBehaviour
     public static LevelUIManager instance;
     public Text scoreText;
     public GameObject PanelUp;
+    public Text HighScore;
 
     private void Awake()
     {
@@ -30,7 +31,10 @@ public class LevelUIManager : MonoBehaviour
 
     public void GameOver()
     {
+        ScoreManager.instance.StopScore();
         PanelUp.SetActive(true);
+        HighScore.text = PlayerPrefs.GetInt("HighScore").ToString();
+        Debug.Log(ScoreManager.instance.HighScore.ToString());
     }
 
     public void Restart()

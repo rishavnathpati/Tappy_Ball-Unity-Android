@@ -3,6 +3,7 @@
 public class ScoreManager : MonoBehaviour
 {
     public int score;
+    public int HighScore;
     public static ScoreManager instance;
     // Start is called before the first frame update
     private void Awake()
@@ -35,11 +36,15 @@ public class ScoreManager : MonoBehaviour
             if (score > PlayerPrefs.GetInt("HighScore"))
             {
                 PlayerPrefs.SetInt("HighScore", score);
+                HighScore = PlayerPrefs.GetInt("HighScore");
+                Debug.Log("High Score: "+HighScore);
             }
         }
         else
         {
             PlayerPrefs.SetInt("HighScore", score);
+            HighScore = PlayerPrefs.GetInt("HighScore");
+            Debug.Log("High Score: " + HighScore);
         }
     }
 
