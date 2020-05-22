@@ -10,6 +10,7 @@ public class LevelUIManager : MonoBehaviour
     public Text scoreText;
     public GameObject PanelUp;
     public Text HighScore;
+    public AudioSource clickSound;
 
     private void Awake()
     {
@@ -39,11 +40,13 @@ public class LevelUIManager : MonoBehaviour
 
     public void Restart()
     {
+        clickSound.Play();
         SceneManager.LoadScene("Level1");
     }
 
     public void Menu()
     {
+        clickSound.Play();
         SceneManager.LoadScene("Menu");
     }
 }
