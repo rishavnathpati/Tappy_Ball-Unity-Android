@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
     public float upForce;
-    Rigidbody2D rb;
     bool started,gameOver;
     public AudioSource tapSound, hitSound,backgroundSound;
+    public Sprite sadBall;
+
+    Rigidbody2D rb;
+    Image Image;
 
     // Start is called before the first frame update
     void Start()
     {
+        Image = GetComponent<Image>();
         rb = GetComponent<Rigidbody2D>();
         started = false;
         gameOver = false;
@@ -40,8 +45,9 @@ public class BallController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Pipe"))
+        if(collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("floor"))
         {
+            this.GetComponent<SpriteRenderer>().sprite = sadBall;
             backgroundSound.Pause();
             hitSound.Play();
             gameOver = true;
@@ -53,5 +59,4 @@ public class BallController : MonoBehaviour
             ScoreManager.instance.IncrementScore();
         }
     }
-
 }

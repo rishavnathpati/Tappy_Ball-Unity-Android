@@ -35,11 +35,12 @@ public class LevelUIManager : MonoBehaviour
         ScoreManager.instance.StopScore();
         PanelUp.SetActive(true);
         HighScore.text = PlayerPrefs.GetInt("HighScore").ToString();
-        Debug.Log(ScoreManager.instance.HighScore.ToString());
+        Debug.Log("Game over");
     }
 
     public void Restart()
     {
+        Time.timeScale = 1;
         clickSound.Play();
         SceneManager.LoadScene("Level1");
     }
