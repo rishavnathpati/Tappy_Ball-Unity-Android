@@ -27,19 +27,19 @@ public class UIManager : MonoBehaviour
     {
         //infoPanel.SetActive(true);
 
-        if (btnPressed==false)
+        if (btnPressed == false)
         {
             ClickButton.Play();
             infoPanel.SetActive(true);
             btnPressed = true;
         }
-        else if(btnPressed==true)
+        else if (btnPressed == true)
         {
             ClickButton.Play();
             infoPanel.SetActive(false);
             btnPressed = false;
         }
-               
+
     }
 
     public void fbButton()

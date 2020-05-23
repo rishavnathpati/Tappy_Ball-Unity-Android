@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("HighScore", score);
                 HighScore = PlayerPrefs.GetInt("HighScore");
-                Debug.Log("High Score: "+HighScore);
+                Debug.Log("High Score: " + HighScore);
             }
         }
         else

@@ -4,9 +4,10 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
     public float upForce;
-    bool started,gameOver;
-    public AudioSource tapSound, hitSound,backgroundSound;
+    bool started, gameOver;
+    public AudioSource tapSound, hitSound, backgroundSound;
     public Sprite sadBall;
+    public float rotation;
 
     Rigidbody2D rb;
     Image Image;
@@ -34,6 +35,7 @@ public class BallController : MonoBehaviour
         }
         else
         {
+            transform.Rotate(0, 0, rotation);
             if (Input.GetMouseButtonDown(0))
             {
                 //tapSound.Play();
@@ -45,15 +47,16 @@ public class BallController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("floor"))
+        if (collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("floor"))
         {
             this.GetComponent<SpriteRenderer>().sprite = sadBall;
             backgroundSound.Pause();
             hitSound.Play();
             gameOver = true;
             LevelUIManager.instance.GameOver();
+            PipeSpawner.instance.StopSpawningPipes();
         }
-        if(collision.gameObject.CompareTag("Score Checker") && !gameOver)
+        if (collision.gameObject.CompareTag("Score Checker") && !gameOver)
         {
             tapSound.Play();
             ScoreManager.instance.IncrementScore();
